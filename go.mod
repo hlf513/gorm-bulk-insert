@@ -1,6 +1,6 @@
-module github.com/t-tiger/gorm-bulk-insert
+module github.com/hlf513/gorm-bulk-insert
 
-go 1.12
+go 1.13
 
 require (
 	github.com/jinzhu/gorm v1.9.11

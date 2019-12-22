@@ -12,7 +12,7 @@ This library is aimed to solve the bulk insert problem.
 
 ## Installation
 
-`$ go get github.com/t-tiger/gorm-bulk-insert`
+`$ go get github.com/hlf513/gorm-bulk-insert`
 
 This library depends on gorm, following command is also necessary unless you've installed gorm.
 
@@ -57,7 +57,7 @@ package main
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"github.com/t-tiger/gorm-bulk-insert"
+	"github.com/hlf513/gorm-bulk-insert"
 	"log"
 	"time"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -103,4 +103,4 @@ func main() {
 
 ## License
 
-This project is under Apache 2.0 License. See the [LICENSE](https://github.com/kabukikeiji/gorm-bulk-insert/blob/master/LICENSE.txt) file for the full license text.
+This project is under Apache 2.0 License. See the [LICENSE](https://github.com/hlf513/gorm-bulk-insert/blob/master/LICENSE.txt) file for the full license text.
