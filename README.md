@@ -18,10 +18,15 @@ This library depends on gorm, following command is also necessary unless you've 
 
 `$ go get github.com/jinzhu/gorm`
 
+## Modify
+
+Add action param, the options is `gormbulk.Insert`,`gormbulk.InsertIgnore`,`gormbulk.Replace`
+
 ## Usage
 
 ```go
-gormbulk.BulkInsert(db, sliceValue, 3000)
+// 1: insert 2: insert ignore 3: replace
+gormbulk.BulkInsert(db, sliceValue, 3000, gormbulk.Insert)
 ```
 
 Third argument specifies the maximum number of records to bulk insert at once. This is because inserting a large number of records and embedding variable at once will exceed the limit of prepared statement.
@@ -29,7 +34,8 @@ Third argument specifies the maximum number of records to bulk insert at once. T
 Depending on the number of variables included, 2000 to 3000 is recommended.
 
 ```go
-gormbulk.BulkInsert(db, sliceValue, 3000, "Name", "Email")
+// 1: insert 2: insert ignore 3: replace
+gormbulk.BulkInsert(db, sliceValue, 3000, gormbulk.Insert, "Name", "Email")
 ```
 
 Basically, inserting struct values are automatically chosen. However if you want to exclude some columns explicitly, you can specify as argument.
@@ -82,13 +88,13 @@ func main() {
 		)
 	}
 
-	err := gormbulk.BulkInsert(db, insertRecords, 3000)
+	err := gormbulk.BulkInsert(db, insertRecords, 3000, gormbulk.Insert)
 	if err != nil {
 		// do something
 	}
 
 	// columns you want to exclude from Insert, specify as an argument
-	err = gormbulk.BulkInsert(db, insertRecords, 3000, "Email")
+	err = gormbulk.BulkInsert(db, insertRecords, 3000, gormbulk.Insert, "Email")
         if err != nil {
             // do something
         }
