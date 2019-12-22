@@ -76,7 +76,7 @@ func insertObjSet(db *gorm.DB, objects []interface{}, excludeColumns ...string) 
 		mainScope.SQLVars = append(mainScope.SQLVars, scope.SQLVars...)
 	}
 
-	mainScope.Raw(fmt.Sprintf("INSERT INTO %s (%s) VALUES %s",
+	mainScope.Raw(fmt.Sprintf("INSERT IGNORE INTO %s (%s) VALUES %s",
 		mainScope.QuotedTableName(),
 		strings.Join(dbColumns, ", "),
 		strings.Join(placeholders, ", "),
